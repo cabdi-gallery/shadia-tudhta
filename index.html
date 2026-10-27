@@ -1,32 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="so">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Tushta</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beerta Sawirada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <div class="side side-left" aria-hidden="true"></div>
+  <div class="side side-right" aria-hidden="true"></div>
+
+  <div class="page">
     <header>
-        <h1>Beertayda sawirada</h1>
-        <p>My favorite memories</p><br><br><p>Beautiful Pictures</p>
+      <h1 class="box box-h1">Beerta Sawirada</h1>
+      <p class="box box-teal">My favorite memories</p>
+      <p class="box box-yellow">Beautiful pictures</p>
     </header>
 
     <main class="gallery">
-        <img src="images/photo1.jpg" alt="My photo 1">
-        <img src="images/photo2.jpg" alt="My photo 2">
-        <img src="images/photo3.jpg" alt="My photo 3">
-        <img src="images/photo4.jpg" alt="My photo 4">
+      <img src="photo1.jpeg" alt="My photo 1">
+      <img src="photo2.jpeg" alt="My photo 2">
+      <img src="photo3.jpeg" alt="My photo 3">
+      <img src="photo4.jpeg" alt="My photo 4">
     </main>
+  </div>
 
-    <div class="lightbox" id="lightbox">
-        <button id="close" aria-label="Close">×</button>
-        <button id="prev" aria-label="Previous photo">❮</button>
-        <img id="lightbox-img" src="" alt="Full size photo">
-        <button id="next" aria-label="Next photo">❯</button>
-    </div>
+  <div class="lightbox" id="lightbox">
+    <button id="close" aria-label="Close">&times;</button>
+    <button id="prev" aria-label="Previous photo">&lsaquo;</button>
+    <img id="lightbox-img" src="" alt="Full size photo">
+    <button id="next" aria-label="Next photo">&rsaquo;</button>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
