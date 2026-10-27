@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Tushta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <h1>Beertayda sawirada</h1>
+        <p>My favorite memories</p><br><br><p>Beautiful Pictures</p>
+    </header>
+
+    <main class="gallery">
+        <img src="images/photo1.jpg" alt="My photo 1">
+        <img src="images/photo2.jpg" alt="My photo 2">
+        <img src="images/photo3.jpg" alt="My photo 3">
+        <img src="images/photo4.jpg" alt="My photo 4">
+    </main>
+
+    <div class="lightbox" id="lightbox">
+        <button id="close" aria-label="Close">×</button>
+        <button id="prev" aria-label="Previous photo">❮</button>
+        <img id="lightbox-img" src="" alt="Full size photo">
+        <button id="next" aria-label="Next photo">❯</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
