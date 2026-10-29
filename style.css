@@ -1,492 +1,418 @@
-:root {
-    --pink: #ff5e9c;
-    --light-pink: #ffe4ef;
-    --pale-pink: #fff6fa;
-    --purple: #30203f;
-    --deep-purple: #20142f;
-    --white: #ffffff;
-    --gold: #ffd166;
-}
-
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+:root {
+    --pink: #e78db5;
+    --deep-pink: #bd5f8e;
+    --light-pink: #fff0f6;
+    --purple: #a58ac5;
+    --text: #694b60;
+    --white: #ffffff;
 }
 
 body {
     font-family: "Nunito", sans-serif;
-    background: linear-gradient(
-        145deg,
-        #fff0f6,
-        #f8d8e9,
-        #f1e3ff
-    );
-    color: var(--purple);
+    color: var(--text);
+    background: linear-gradient(145deg, #fff8fb, #fbe6f1, #f5eaff);
     min-height: 100vh;
     overflow-x: hidden;
 }
 
-/* Qurxinta bogga */
-
 .page-decoration {
-    position: absolute;
-    top: 190px;
+    position: fixed;
+    top: 100px;
     left: 15px;
-    font-size: 70px;
-    color: #ff92ba;
-    opacity: 0.35;
+    font-size: 90px;
+    color: #e8a6c7;
+    opacity: 0.18;
     pointer-events: none;
+    z-index: -1;
 }
 
 .decoration-two {
-    top: 650px;
+    top: auto;
     left: auto;
-    right: 15px;
-    color: #ba8cde;
+    right: 12px;
+    bottom: 25px;
+    color: #b9a0db;
 }
-
-/* Qaybta kore */
 
 .hero {
     text-align: center;
-    padding: 65px 18px 35px;
-    background: linear-gradient(
-        135deg,
-        #ff9fbe,
-        #ff6caa,
-        #bd8af0
-    );
-    border-radius: 0 0 45px 45px;
-    box-shadow: 0 12px 30px #a83e7830;
+    padding: 65px 20px 35px;
 }
 
 .small-label {
-    display: inline-block;
+    color: var(--deep-pink);
     font-size: 11px;
     font-weight: 900;
     letter-spacing: 3px;
-    color: #873c69;
-    margin-bottom: 12px;
 }
 
 .hero h1 {
+    margin: 15px 0 10px;
     font-family: "Playfair Display", serif;
-    font-size: clamp(36px, 8vw, 65px);
-    line-height: 1.15;
-    color: #fff;
-    text-shadow: 2px 4px 0 #9d467f45;
+    font-size: clamp(36px, 7vw, 62px);
+    color: #b95387;
 }
 
 .subtitle {
-    margin-top: 14px;
     font-size: 15px;
-    color: #fff;
+    color: #8d6b84;
 }
 
 .hero-line {
-    margin-top: 22px;
     display: flex;
     justify-content: center;
     gap: 18px;
-    color: #fff;
-    font-size: 23px;
+    margin-top: 23px;
+    color: var(--pink);
+    font-size: 22px;
 }
 
-/* Qaab-dhismeedka guud */
-
 .container {
-    width: min(100% - 28px, 1000px);
+    width: min(1120px, 92%);
     margin: 0 auto;
 }
 
-/* Sawirka koowaad */
-
 .featured-section {
-    padding: 35px 0 20px;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0 55px;
 }
 
 .featured-frame {
-    max-width: 490px;
-    margin: auto;
-    padding: 12px;
-    background: #fffafc;
-    border: 2px solid #ffffff;
-    border-radius: 28px;
-    box-shadow:
-        0 15px 35px #80385c20,
-        0 0 0 5px #ffb5d2;
     position: relative;
+    width: min(430px, 100%);
+    padding: 12px;
+    border: 1px solid #f4d3e4;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 40px #c47ca51c;
+    text-align: center;
 }
 
 .featured-label {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    color: #d94d89;
-    font-weight: 900;
-    letter-spacing: 2px;
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px 0 12px;
+    border-radius: 30px;
+    background: var(--light-pink);
+    color: var(--deep-pink);
     font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .featured-photo {
+    display: block;
     width: 100%;
     height: 390px;
     object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: 19px;
+    border-radius: 20px;
+    background: #f4e5ed;
     cursor: zoom-in;
-    transition: transform 0.3s ease;
-}
-
-.featured-photo:hover {
-    transform: scale(1.01);
 }
 
 .featured-caption {
-    text-align: center;
-    padding: 23px 10px 17px;
-    background: linear-gradient(
-        135deg,
-        #fff0f6,
-        #f9e9ff
-    );
-    border-radius: 20px;
-    margin-top: 12px;
+    padding: 18px 10px 12px;
 }
 
 .caption-flower {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .featured-caption h2 {
+    margin: 7px 0;
     font-family: "Playfair Display", serif;
-    color: #d63f84;
-    font-size: clamp(23px, 5vw, 34px);
-    margin: 9px 0;
+    font-size: 25px;
+    color: #b95387;
 }
 
 .featured-caption p {
-    color: #75536d;
     font-size: 14px;
     line-height: 1.8;
-    max-width: 330px;
-    margin: auto;
 }
 
 .heart-divider {
-    color: #ff5e9c;
-    letter-spacing: 9px;
-    margin-top: 14px;
-    font-size: 20px;
+    margin-top: 12px;
+    color: var(--pink);
+    letter-spacing: 8px;
 }
-
-/* Cinwaanka gallery-ga */
 
 .gallery-heading {
     text-align: center;
-    padding: 48px 5px 20px;
+    padding: 15px 0 25px;
 }
 
 .gallery-heading h2 {
+    margin: 12px 0 8px;
     font-family: "Playfair Display", serif;
-    font-size: clamp(26px, 6vw, 39px);
-    color: #71365f;
-    margin: 5px 0 12px;
+    font-size: clamp(25px, 4vw, 36px);
+    color: #b95387;
 }
 
 .gallery-heading p {
-    color: #80647b;
     font-size: 14px;
-    line-height: 1.7;
 }
-
-/* Badhannada */
 
 .filter-buttons {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 16px 0 25px;
+    gap: 12px;
+    margin: 0 0 30px;
 }
 
 .filter-btn {
+    border: 1px solid #efc4da;
     padding: 11px 22px;
-    border: 2px solid #f3a1c5;
     border-radius: 30px;
-    background: #fff;
-    color: #b7477d;
+    background: white;
+    color: #a55a82;
     font-family: inherit;
+    font-size: 13px;
     font-weight: 800;
     cursor: pointer;
-    transition: 0.25s ease;
+    transition: 0.2s;
 }
 
 .filter-btn:hover,
 .filter-btn.active {
-    background: linear-gradient(135deg, #ff6ba8, #c18af0);
-    color: #fff;
+    color: white;
+    background: linear-gradient(135deg, #e58db6, #b99ad9);
     border-color: transparent;
-    transform: translateY(-2px);
+    box-shadow: 0 5px 15px #d68bb633;
 }
-
-/* Gallery-ga 15 sawir */
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 17px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
 }
 
 .photo-card {
-    position: relative;
     min-width: 0;
-    background: #fffafc;
-    padding: 8px;
-    border-radius: 19px;
-    box-shadow: 0 7px 20px #733c5b16;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-    animation: appear 0.5s ease both;
+    position: relative;
+    padding: 9px;
+    overflow: hidden;
+    border: 1px solid #f3d9e7;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.82);
+    box-shadow: 0 7px 22px #b87b9a12;
+    transition: transform 0.25s, box-shadow 0.25s;
 }
 
 .photo-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 13px 25px #733c5b28;
+    box-shadow: 0 12px 25px #b87b9a2b;
 }
 
-.card-image {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+.photo-card img {
     display: block;
-    border-radius: 13px;
+    width: 100%;
+    height: 245px;
+    object-fit: cover;
+    border-radius: 14px;
+    background: #f2e3eb;
     cursor: zoom-in;
-    background: #f9dce9;
 }
 
-.card-caption {
+.photo-title {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 9px 2px 3px;
     text-align: center;
-    padding: 12px 4px 8px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 800;
-    line-height: 1.5;
-    color: #5a3b59;
     overflow-wrap: anywhere;
 }
 
 .favorite-btn {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    z-index: 2;
-    width: 36px;
-    height: 36px;
-    border: none;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border: 1px solid #ffffffb0;
     border-radius: 50%;
-    background: #ffffffeb;
-    color: #dd4c8c;
-    font-size: 21px;
-    box-shadow: 0 3px 9px #00000015;
+    background: #ffffffd9;
+    color: #9e8092;
+    font-size: 19px;
     cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.favorite-btn:active {
-    transform: scale(1.2);
+    z-index: 1;
 }
 
 .favorite-btn.is-favorite {
-    background: #ff5e9c;
-    color: white;
+    color: #e34383;
+    background: #fff0f6;
 }
 
 .empty-message {
     grid-column: 1 / -1;
+    padding: 40px 15px;
     text-align: center;
-    padding: 35px 10px;
-    color: #98658a;
+    border-radius: 20px;
+    background: #ffffffa8;
 }
 
-/* Footer */
-
 footer {
+    margin-top: 65px;
+    padding: 35px 10px 30px;
+    border-top: 1px solid #edcfe0;
     text-align: center;
-    margin-top: 55px;
-    padding: 32px 15px 35px;
-    background: #ffffffa8;
-    border-radius: 30px 30px 0 0;
 }
 
 .footer-heart {
+    color: var(--pink);
     font-size: 35px;
-    color: #ff5e9c;
 }
 
 footer h3 {
-    font-family: "Playfair Display", serif;
-    font-size: 25px;
     margin: 7px 0;
-    color: #a83f7c;
+    font-family: "Playfair Display", serif;
+    color: #b95387;
+    font-size: 24px;
 }
 
 footer p {
+    margin-bottom: 15px;
     font-size: 13px;
-    color: #80647b;
-    margin-bottom: 17px;
 }
 
 footer span {
+    color: #a58ba0;
     font-size: 11px;
-    color: #a18a9b;
 }
-
-/* Sawirka marka la weyneeyo */
 
 .lightbox {
     position: fixed;
     inset: 0;
-    z-index: 1000;
     display: none;
     align-items: center;
     justify-content: center;
-    padding: 55px 55px 70px;
-    background: #160c20f5;
+    padding: 65px 55px;
+    background: rgba(35, 19, 32, 0.94);
+    z-index: 1000;
 }
 
 .lightbox.open {
     display: flex;
 }
 
-#lightboxImage {
+.lightbox img {
     display: block;
     max-width: 100%;
     max-height: 82vh;
     object-fit: contain;
-    border-radius: 12px;
-    box-shadow: 0 0 30px #ff8ebc30;
+    border-radius: 10px;
 }
 
 .close-lightbox,
 .lightbox-arrow {
     position: absolute;
-    border: none;
-    color: #fff;
-    background: #ffffff20;
-    cursor: pointer;
-    border-radius: 50%;
     display: grid;
     place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: #ffffffeb;
+    color: #8f4772;
+    cursor: pointer;
 }
 
 .close-lightbox {
-    top: 17px;
-    right: 20px;
+    top: 18px;
+    right: 22px;
     width: 43px;
     height: 43px;
-    font-size: 32px;
+    font-size: 30px;
 }
 
 .lightbox-arrow {
     top: 50%;
+    width: 42px;
+    height: 52px;
+    font-size: 36px;
     transform: translateY(-50%);
-    width: 40px;
-    height: 48px;
-    font-size: 35px;
 }
 
-.previous {
-    left: 8px;
+.lightbox-arrow.previous {
+    left: 12px;
 }
 
-.next {
-    right: 8px;
+.lightbox-arrow.next {
+    right: 12px;
 }
 
 #photoCounter {
     position: absolute;
     bottom: 20px;
-    color: #fff;
-    font-size: 13px;
+    color: white;
+    font-size: 14px;
 }
 
-/* Animation */
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
+@media (max-width: 900px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
     }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .photo-card img {
+        height: 220px;
     }
 }
 
-/* Telefoonka */
-
-@media (max-width: 420px) {
+@media (max-width: 600px) {
     .hero {
-        padding-top: 48px;
-    }
-
-    .container {
-        width: calc(100% - 22px);
-    }
-
-    .featured-photo {
-        height: 330px;
+        padding-top: 45px;
     }
 
     .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 12px;
     }
 
     .photo-card {
-        padding: 6px;
-        border-radius: 15px;
+        padding: 7px;
+        border-radius: 16px;
     }
 
-    .card-image {
-        border-radius: 10px;
+    .photo-card img {
+        height: 210px;
+        border-radius: 11px;
     }
 
-    .card-caption {
-        font-size: 12px;
-    }
-
-    .filter-btn {
-        padding: 10px 16px;
-        font-size: 12px;
-    }
-
-    .lightbox {
-        padding-left: 43px;
-        padding-right: 43px;
-    }
-}
-
-/* Laptop iyo shaashado waaweyn */
-
-@media (min-width: 700px) {
-    .gallery-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
+    .photo-title {
+        font-size: 11px;
     }
 
     .featured-photo {
-        height: 480px;
+        height: 340px;
+    }
+
+    .lightbox {
+        padding: 65px 42px;
+    }
+
+    .lightbox-arrow.previous {
+        left: 5px;
+    }
+
+    .lightbox-arrow.next {
+        right: 5px;
     }
 }
 
-@media (min-width: 950px) {
-    .gallery-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+@media (max-width: 360px) {
+    .photo-card img {
+        height: 175px;
     }
 }
