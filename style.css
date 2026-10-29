@@ -1,164 +1,492 @@
 :root {
-  --bg: #1b1530;
-  --coral: #ff5d73;
-  --orange: #ff9f45;
-  --teal: #19c3b1;
-  --yellow: #ffd23f;
-  --ink: #1b1530;
-  --paper: #fffaf0;
-  color-scheme: dark;
+    --pink: #ff5e9c;
+    --light-pink: #ffe4ef;
+    --pale-pink: #fff6fa;
+    --purple: #30203f;
+    --deep-purple: #20142f;
+    --white: #ffffff;
+    --gold: #ffd166;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-  background: var(--bg);
-  color: var(--paper);
-  font-family: "Nunito", system-ui, sans-serif;
-  min-height: 100vh;
+    font-family: "Nunito", sans-serif;
+    background: linear-gradient(
+        145deg,
+        #fff0f6,
+        #f8d8e9,
+        #f1e3ff
+    );
+    color: var(--purple);
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-/* Decorated sides */
-.side {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 70px;
-  background:
-    radial-gradient(circle at 50% 50%, var(--yellow) 0 9px, transparent 10px) 0 0 / 70px 140px,
-    radial-gradient(circle at 50% 50%, var(--teal) 0 9px, transparent 10px) 0 70px / 70px 140px,
-    linear-gradient(180deg, var(--coral), var(--orange));
-  opacity: .9;
-}
-.side-left  { left: 0;  border-right: 6px solid var(--yellow); }
-.side-right { right: 0; border-left: 6px solid var(--teal); }
+/* Qurxinta bogga */
 
-.page {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 40px 20px 60px;
+.page-decoration {
+    position: absolute;
+    top: 190px;
+    left: 15px;
+    font-size: 70px;
+    color: #ff92ba;
+    opacity: 0.35;
+    pointer-events: none;
 }
 
-/* Header boxes */
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 44px;
+.decoration-two {
+    top: 650px;
+    left: auto;
+    right: 15px;
+    color: #ba8cde;
 }
 
-.box {
-  border: 4px solid var(--ink);
-  border-radius: 18px;
-  padding: 12px 28px;
-  text-align: center;
-  font-family: "Fredoka", sans-serif;
-  color: var(--ink);
+/* Qaybta kore */
+
+.hero {
+    text-align: center;
+    padding: 65px 18px 35px;
+    background: linear-gradient(
+        135deg,
+        #ff9fbe,
+        #ff6caa,
+        #bd8af0
+    );
+    border-radius: 0 0 45px 45px;
+    box-shadow: 0 12px 30px #a83e7830;
 }
 
-.box-h1 {
-  font-size: clamp(2rem, 7vw, 3.6rem);
-  background: linear-gradient(135deg, var(--coral), var(--orange));
-  box-shadow: 8px 8px 0 var(--yellow);
-}
-.box-teal {
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
-  background: var(--teal);
-  box-shadow: 6px 6px 0 var(--coral);
-}
-.box-yellow {
-  font-size: clamp(1.1rem, 4vw, 1.5rem);
-  background: var(--yellow);
-  box-shadow: 6px 6px 0 var(--teal);
+.small-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    color: #873c69;
+    margin-bottom: 12px;
 }
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 28px;
-  align-items: start;
+.hero h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(36px, 8vw, 65px);
+    line-height: 1.15;
+    color: #fff;
+    text-shadow: 2px 4px 0 #9d467f45;
 }
 
-.gallery figure {
-  background: var(--paper);
-  padding: 10px 10px 0;
-  border-radius: 10px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, .45);
-  transition: transform .2s ease;
-}
-.gallery figure:nth-child(odd)  { transform: rotate(-1.5deg); }
-.gallery figure:nth-child(even) { transform: rotate(1.5deg); }
-.gallery figure:hover { transform: rotate(0) scale(1.03); }
-
-.gallery img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 6px;
-  cursor: pointer;
+.subtitle {
+    margin-top: 14px;
+    font-size: 15px;
+    color: #fff;
 }
 
-.gallery figcaption {
-  min-height: 3em;
-  padding: 8px 4px;
-  color: var(--ink);
-  font-family: "Fredoka", sans-serif;
-  font-size: .95rem;
-  text-align: center;
-  line-height: 1.25;
+.hero-line {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    color: #fff;
+    font-size: 23px;
 }
 
-/* Lightbox */
+/* Qaab-dhismeedka guud */
+
+.container {
+    width: min(100% - 28px, 1000px);
+    margin: 0 auto;
+}
+
+/* Sawirka koowaad */
+
+.featured-section {
+    padding: 35px 0 20px;
+}
+
+.featured-frame {
+    max-width: 490px;
+    margin: auto;
+    padding: 12px;
+    background: #fffafc;
+    border: 2px solid #ffffff;
+    border-radius: 28px;
+    box-shadow:
+        0 15px 35px #80385c20,
+        0 0 0 5px #ffb5d2;
+    position: relative;
+}
+
+.featured-label {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    color: #d94d89;
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+.featured-photo {
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 19px;
+    cursor: zoom-in;
+    transition: transform 0.3s ease;
+}
+
+.featured-photo:hover {
+    transform: scale(1.01);
+}
+
+.featured-caption {
+    text-align: center;
+    padding: 23px 10px 17px;
+    background: linear-gradient(
+        135deg,
+        #fff0f6,
+        #f9e9ff
+    );
+    border-radius: 20px;
+    margin-top: 12px;
+}
+
+.caption-flower {
+    font-size: 28px;
+}
+
+.featured-caption h2 {
+    font-family: "Playfair Display", serif;
+    color: #d63f84;
+    font-size: clamp(23px, 5vw, 34px);
+    margin: 9px 0;
+}
+
+.featured-caption p {
+    color: #75536d;
+    font-size: 14px;
+    line-height: 1.8;
+    max-width: 330px;
+    margin: auto;
+}
+
+.heart-divider {
+    color: #ff5e9c;
+    letter-spacing: 9px;
+    margin-top: 14px;
+    font-size: 20px;
+}
+
+/* Cinwaanka gallery-ga */
+
+.gallery-heading {
+    text-align: center;
+    padding: 48px 5px 20px;
+}
+
+.gallery-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(26px, 6vw, 39px);
+    color: #71365f;
+    margin: 5px 0 12px;
+}
+
+.gallery-heading p {
+    color: #80647b;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Badhannada */
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 16px 0 25px;
+}
+
+.filter-btn {
+    padding: 11px 22px;
+    border: 2px solid #f3a1c5;
+    border-radius: 30px;
+    background: #fff;
+    color: #b7477d;
+    font-family: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(135deg, #ff6ba8, #c18af0);
+    color: #fff;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/* Gallery-ga 15 sawir */
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.photo-card {
+    position: relative;
+    min-width: 0;
+    background: #fffafc;
+    padding: 8px;
+    border-radius: 19px;
+    box-shadow: 0 7px 20px #733c5b16;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    animation: appear 0.5s ease both;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 13px 25px #733c5b28;
+}
+
+.card-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    border-radius: 13px;
+    cursor: zoom-in;
+    background: #f9dce9;
+}
+
+.card-caption {
+    text-align: center;
+    padding: 12px 4px 8px;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #5a3b59;
+    overflow-wrap: anywhere;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: #ffffffeb;
+    color: #dd4c8c;
+    font-size: 21px;
+    box-shadow: 0 3px 9px #00000015;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.favorite-btn:active {
+    transform: scale(1.2);
+}
+
+.favorite-btn.is-favorite {
+    background: #ff5e9c;
+    color: white;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 35px 10px;
+    color: #98658a;
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    margin-top: 55px;
+    padding: 32px 15px 35px;
+    background: #ffffffa8;
+    border-radius: 30px 30px 0 0;
+}
+
+.footer-heart {
+    font-size: 35px;
+    color: #ff5e9c;
+}
+
+footer h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 25px;
+    margin: 7px 0;
+    color: #a83f7c;
+}
+
+footer p {
+    font-size: 13px;
+    color: #80647b;
+    margin-bottom: 17px;
+}
+
+footer span {
+    font-size: 11px;
+    color: #a18a9b;
+}
+
+/* Sawirka marka la weyneeyo */
+
 .lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(10, 8, 20, .94);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-.lightbox.open { display: flex; }
-
-.lightbox img {
-  max-width: 86vw;
-  max-height: 86vh;
-  border: 6px solid var(--paper);
-  border-radius: 6px;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 55px 70px;
+    background: #160c20f5;
 }
 
-.lightbox button {
-  position: absolute;
-  background: var(--yellow);
-  color: var(--ink);
-  border: 3px solid var(--ink);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  font-size: 1.8rem;
-  line-height: 1;
-  cursor: pointer;
-}
-.lightbox button:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
-#close { top: 16px; right: 16px; }
-#prev  { left: 12px; top: 50%; transform: translateY(-50%); }
-#next  { right: 12px; top: 50%; transform: translateY(-50%); }
-
-/* Phones: 2 columns like a photo grid, slimmer sides */
-@media (max-width: 700px) {
-  .side { width: 18px; }
-  .side-left, .side-right { border-width: 3px; }
-  .page { padding: 28px 26px 50px; }
-  .gallery { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .gallery figure { padding: 5px 5px 0; border-radius: 8px; }
-  .gallery figure:nth-child(odd), .gallery figure:nth-child(even) { transform: none; }
-  .gallery img { border-radius: 5px; }
-  .gallery figcaption { min-height: 2.6em; padding: 5px 2px; font-size: .68rem; }
+.lightbox.open {
+    display: flex;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .gallery figure { transition: none; }
+#lightboxImage {
+    display: block;
+    max-width: 100%;
+    max-height: 82vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 30px #ff8ebc30;
+}
+
+.close-lightbox,
+.lightbox-arrow {
+    position: absolute;
+    border: none;
+    color: #fff;
+    background: #ffffff20;
+    cursor: pointer;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.close-lightbox {
+    top: 17px;
+    right: 20px;
+    width: 43px;
+    height: 43px;
+    font-size: 32px;
+}
+
+.lightbox-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 48px;
+    font-size: 35px;
+}
+
+.previous {
+    left: 8px;
+}
+
+.next {
+    right: 8px;
+}
+
+#photoCounter {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    font-size: 13px;
+}
+
+/* Animation */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Telefoonka */
+
+@media (max-width: 420px) {
+    .hero {
+        padding-top: 48px;
+    }
+
+    .container {
+        width: calc(100% - 22px);
+    }
+
+    .featured-photo {
+        height: 330px;
+    }
+
+    .gallery-grid {
+        gap: 12px;
+    }
+
+    .photo-card {
+        padding: 6px;
+        border-radius: 15px;
+    }
+
+    .card-image {
+        border-radius: 10px;
+    }
+
+    .card-caption {
+        font-size: 12px;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+
+    .lightbox {
+        padding-left: 43px;
+        padding-right: 43px;
+    }
+}
+
+/* Laptop iyo shaashado waaweyn */
+
+@media (min-width: 700px) {
+    .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .featured-photo {
+        height: 480px;
+    }
+}
+
+@media (min-width: 950px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
 }
