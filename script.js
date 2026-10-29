@@ -1,4 +1,4 @@
-// 19 sawir (JPEG): images/1.jpg ... images/19.jpg
+// 19 sawir (JPEG): images/photo1.jpeg ... images/photo19.jpeg
 // Beddel qaybta (cat) sawir kasta haddii aad rabto:
 // portraits | nature | travel | fashion | friends
 const cats = [
@@ -6,7 +6,7 @@ const cats = [
   'portraits','nature','nature','travel','fashion','friends',
   'portraits','nature','travel','fashion','friends','portraits','nature'
 ];
-const photos = cats.map((cat, i) => ({ src: `images/${i + 1}.jpg`, cat, id: i + 1 }));
+const photos = cats.map((cat, i) => ({ src: `images/photo${i + 1}.jpeg`, cat, id: i + 1 }));
 
 const PER_PAGE = 6;
 let filter = 'all';
