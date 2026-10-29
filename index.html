@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html lang="so">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#f7d3e5">
-    <title>Beerta Sawirada 💗</title>
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beerta Sawirada</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Pacifico&family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <div class="page-decoration">♡</div>
-    <div class="page-decoration decoration-two">✿</div>
+<div class="app">
 
-    <header class="hero">
-        <span class="small-label">♡ MY LITTLE GALLERY ♡</span>
-        <h1>Beerta Sawirada</h1>
-        <p class="subtitle">Xusuuso qurux badan, qalbi faraxsan 🌷</p>
-        <div class="hero-line"><span>✦</span><span>♡</span><span>✦</span></div>
-    </header>
+  <!-- NAV -->
+  <header class="nav">
+    <a class="logo" href="#home"><span class="logo-ic">📷</span> Beerta Sawirada</a>
+    <nav class="menu">
+      <a href="#home" class="active">🏠 Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-btns">
+      <button class="round" id="searchBtn" aria-label="Raadi">🔍</button>
+      <button class="round pink" aria-label="Profile">👤</button>
+    </div>
+  </header>
 
-    <main class="container">
-        <section class="featured-section">
-            <div class="featured-frame">
-                <span class="featured-label">MY FAVORITE ♡</span>
-                <img
-                    src="photo1.jpeg"
-                    alt="Tushtu oo leh dimple"
-                    class="featured-photo"
-                    id="featuredPhoto"
-                >
-                <div class="featured-caption">
-                    <span class="caption-flower">🌸</span>
-                    <h2>Tushtu Waa Quruxdayda</h2>
-                    <p>Dhoolla-caddayntaadu waa farxad,
-                    quruxdaaduna waa xusuus qalbiga ku nool. 💗</p>
-                    <div class="heart-divider">♡ ♡ ♡</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="gallery-heading">
-            <span class="small-label">LITTLE MOMENTS, BIG MEMORIES</span>
-            <h2>My Favorite Memories 💕</h2>
-            <p>Sawir kasta wuxuu xambaarsan yahay xusuus gaar ah.</p>
-        </section>
-
-        <nav class="filter-buttons" aria-label="Doorashada sawirrada">
-            <button class="filter-btn active" data-filter="all">♡ All Photos</button>
-            <button class="filter-btn" data-filter="favorites">♥ Favorites</button>
-        </nav>
-
-        <section class="gallery-grid" id="gallery"></section>
-
-        <footer>
-            <div class="footer-heart">♡</div>
-            <h3>Made with Love</h3>
-            <p>Qurux, xusuus iyo farxad — mar walba. 🌷</p>
-            <span>© Beerta Sawirada</span>
-        </footer>
-    </main>
-
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-        <button class="close-lightbox" id="closeLightbox" aria-label="Xir sawirka">×</button>
-        <button class="lightbox-arrow previous" id="previousPhoto" aria-label="Sawirkii hore">‹</button>
-        <img src="" alt="Sawir weyn" id="lightboxImage">
-        <button class="lightbox-arrow next" id="nextPhoto" aria-label="Sawirka xiga">›</button>
-        <p id="photoCounter"></p>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>
+        <span class="script1">Beerta</span>
+        <span class="script2">Sawirada</span>
+      </h1>
+      <p>Xuusuus kasta waa sheeko,<br>Sawir kastana waa daqiiqo qurux badan.</p>
+      <a href="#gallery" class="cta">📷 Eeg Sawirada &nbsp;→</a>
     </div>
 
-    <script src="script.js"></script>
+    <div class="hero-photo">
+      <svg class="blob" viewBox="0 0 400 400"><path d="M320 60c50 40 60 120 30 180s-100 120-180 110S30 290 50 200 140 40 220 30s70 10 100 30z"/></svg>
+      <span class="crown">👑</span>
+      <span class="heart h1">♥</span><span class="heart h2">♥</span><span class="heart h3">♥</span>
+      <div class="photo-frame">
+        <img src="images/1.jpg" alt="Quruxdaydu waa tushta" onerror="this.style.background='#ff7eb6'">
+      </div>
+      <p class="hero-caption">Quruxdaydu waa tushta,</p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section" id="gallery">
+    <div class="filters" id="filters">
+      <button class="chip active" data-cat="all">▦ All</button>
+      <button class="chip" data-cat="portraits">🙂 Portraits</button>
+      <button class="chip" data-cat="nature">🍃 Nature</button>
+      <button class="chip" data-cat="travel">✈ Travel</button>
+      <button class="chip" data-cat="fashion">👗 Fashion</button>
+      <button class="chip" data-cat="friends">👥 Friends</button>
+    </div>
+
+    <div class="grid" id="grid"></div>
+    <div class="pager" id="pager"></div>
+  </section>
+
+  <section class="about" id="about">
+    <h2 class="script-h">Nolosha Sawirada</h2>
+    <p>Halkan waxaan ku kaydiyaa xusuusahayga ugu qurux badan.</p>
+  </section>
+
+  <footer class="footer" id="contact">
+    <a class="logo small" href="#home"><span class="logo-ic">📷</span> Beerta Sawirada</a>
+    <div class="foot-links">Sawirro · Xusuus · Nolol</div>
+    <div class="socials">
+      <a href="#" aria-label="TikTok">♪</a>
+      <a href="#" aria-label="Instagram">◎</a>
+      <a href="#" aria-label="Link">🔗</a>
+    </div>
+  </footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" id="lbClose">✕</button>
+  <button class="lb-nav prev" id="lbPrev">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav next" id="lbNext">›</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
