@@ -1,183 +1,104 @@
-const gallery = document.getElementById("gallery");
-const featuredPhoto = document.getElementById("featuredPhoto");
+// 19 sawir (JPEG): images/1.jpg ... images/19.jpg
+// Beddel qaybta (cat) sawir kasta haddii aad rabto:
+// portraits | nature | travel | fashion | friends
+const cats = [
+  'portraits','travel','fashion','fashion','travel','friends',
+  'portraits','nature','nature','travel','fashion','friends',
+  'portraits','nature','travel','fashion','friends','portraits','nature'
+];
+const photos = cats.map((cat, i) => ({ src: `images/${i + 1}.jpg`, cat, id: i + 1 }));
 
-const lightbox = document.getElementById("lightbox");
-const lightboxImage = document.getElementById("lightboxImage");
-const photoCounter = document.getElementById("photoCounter");
+const PER_PAGE = 6;
+let filter = 'all';
+let page = 1;
+let current = [];
+let lbIndex = 0;
+const liked = new Set(JSON.parse(localStorage.getItem('likedPhotos') || '[]'));
 
-const closeLightbox = document.getElementById("closeLightbox");
-const previousPhoto = document.getElementById("previousPhoto");
-const nextPhoto = document.getElementById("nextPhoto");
+const grid = document.getElementById('grid');
+const pager = document.getElementById('pager');
 
-const filterButtons = document.querySelectorAll(".filter-btn");
+function visible() {
+  return photos.filter(p => filter === 'all' || p.cat === filter);
+}
 
-// 19-ka sawir: photo1.jpeg ilaa photo19.jpeg
-const photos = Array.from({ length: 19 }, (_, index) => ({
-    id: index + 1,
-    src: `photo${index + 1}.jpeg`,
-    title: index === 0
-        ? "Tushtu Waa Quruxdayda"
-        : `Xusuus Qurux Badan ${index + 1}`,
-    favorite: index === 0
+function render() {
+  current = visible();
+  const pages = Math.max(1, Math.ceil(current.length / PER_PAGE));
+  if (page > pages) page = pages;
+  const slice = current.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  grid.innerHTML = '';
+  slice.forEach((p, i) => {
+    const d = document.createElement('div');
+    d.className = 'item';
+    d.style.animationDelay = (i * 60) + 'ms';
+    d.innerHTML = `
+      <img src="${p.src}" alt="Sawir ${p.id}" loading="lazy"
+           onerror="this.style.background='linear-gradient(135deg,#ff6fa8,#3b2a7a)';this.removeAttribute('src')">
+      <button class="fav ${liked.has(p.id) ? 'on' : ''}" aria-label="Jecel">${liked.has(p.id) ? '♥' : '♡'}</button>`;
+    d.querySelector('.fav').addEventListener('click', e => {
+      e.stopPropagation();
+      liked.has(p.id) ? liked.delete(p.id) : liked.add(p.id);
+      localStorage.setItem('likedPhotos', JSON.stringify([...liked]));
+      render();
+    });
+    d.addEventListener('click', () => openLb((page - 1) * PER_PAGE + i));
+    grid.appendChild(d);
+  });
+
+  // pagination
+  pager.innerHTML = '';
+  if (pages > 1) {
+    for (let n = 1; n <= pages; n++) {
+      const b = document.createElement('button');
+      b.textContent = n;
+      if (n === page) b.className = 'active';
+      b.onclick = () => { page = n; render(); document.getElementById('gallery').scrollIntoView({behavior:'smooth'}); };
+      pager.appendChild(b);
+    }
+    const next = document.createElement('button');
+    next.textContent = '→';
+    next.onclick = () => { page = page % pages + 1; render(); };
+    pager.appendChild(next);
+  }
+}
+
+// filters
+document.getElementById('filters').addEventListener('click', e => {
+  const chip = e.target.closest('.chip');
+  if (!chip) return;
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  filter = chip.dataset.cat;
+  page = 1;
+  render();
+});
+
+// lightbox
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+function openLb(i) { lbIndex = i; lbImg.src = current[i].src; lb.classList.add('open'); }
+function closeLb() { lb.classList.remove('open'); }
+function step(d) { lbIndex = (lbIndex + d + current.length) % current.length; lbImg.src = current[lbIndex].src; }
+document.getElementById('lbClose').onclick = closeLb;
+document.getElementById('lbPrev').onclick = () => step(-1);
+document.getElementById('lbNext').onclick = () => step(1);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') step(-1);
+  if (e.key === 'ArrowRight') step(1);
+});
+
+// search button: jump to gallery
+document.getElementById('searchBtn').onclick = () => document.getElementById('gallery').scrollIntoView({behavior:'smooth'});
+
+// menu active state
+document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => {
+  document.querySelectorAll('.menu a').forEach(x => x.classList.remove('active'));
+  a.classList.add('active');
 }));
 
-let currentFilter = "all";
-let currentPhotoIndex = 0;
-
-// Soo bandhig sawirrada
-function displayPhotos() {
-    gallery.innerHTML = "";
-
-    const visiblePhotos = photos.filter(photo => {
-        return currentFilter === "all" || photo.favorite;
-    });
-
-    if (visiblePhotos.length === 0) {
-        gallery.innerHTML = `
-            <div class="empty-message">
-                <h3>♡ Weli favorites ma jiraan ♡</h3>
-                <p>Taabo wadnaha sawirka si aad ugu darto favorites.</p>
-            </div>
-        `;
-        return;
-    }
-
-    visiblePhotos.forEach(photo => {
-        const card = document.createElement("article");
-        card.className = "photo-card";
-
-        const image = document.createElement("img");
-        image.src = photo.src;
-        image.alt = photo.title;
-        image.loading = "lazy";
-
-        image.addEventListener("click", () => {
-            openPhoto(photo.id - 1);
-        });
-
-        const favoriteButton = document.createElement("button");
-        favoriteButton.className = "favorite-btn";
-        favoriteButton.type = "button";
-        favoriteButton.textContent = photo.favorite ? "♥" : "♡";
-        favoriteButton.classList.toggle(
-            "is-favorite",
-            photo.favorite
-        );
-        favoriteButton.setAttribute(
-            "aria-label",
-            photo.favorite
-                ? "Ka saar favorites"
-                : "Ku dar favorites"
-        );
-
-        favoriteButton.addEventListener("click", () => {
-            photo.favorite = !photo.favorite;
-            displayPhotos();
-        });
-
-        const title = document.createElement("div");
-        title.className = "photo-title";
-        title.textContent = photo.id === 1
-            ? "Tushtu Waa Quruxdayda 🌸"
-            : `${photo.title} 🌸`;
-
-        card.appendChild(image);
-        card.appendChild(favoriteButton);
-        card.appendChild(title);
-
-        gallery.appendChild(card);
-
-        // Muuji calaamad marka sawirku maqan yahay
-        image.addEventListener("error", () => {
-            image.alt = `${photo.src} lama helin`;
-            image.style.objectFit = "contain";
-            image.style.padding = "15px";
-        });
-    });
-}
-
-// Fur sawirka weyn
-function openPhoto(index) {
-    currentPhotoIndex = index;
-    updateLightbox();
-
-    lightbox.classList.add("open");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-}
-
-// Cusboonaysii sawirka weyn
-function updateLightbox() {
-    const photo = photos[currentPhotoIndex];
-
-    lightboxImage.src = photo.src;
-    lightboxImage.alt = photo.title;
-
-    photoCounter.textContent =
-        `Sawirka ${currentPhotoIndex + 1} / ${photos.length}`;
-}
-
-// Sawirka xiga
-function showNextPhoto() {
-    currentPhotoIndex =
-        (currentPhotoIndex + 1) % photos.length;
-
-    updateLightbox();
-}
-
-// Sawirkii hore
-function showPreviousPhoto() {
-    currentPhotoIndex =
-        (currentPhotoIndex - 1 + photos.length) % photos.length;
-
-    updateLightbox();
-}
-
-// Xir sawirka weyn
-function closePhoto() {
-    lightbox.classList.remove("open");
-    lightbox.setAttribute("aria-hidden", "true");
-    lightboxImage.src = "";
-    document.body.style.overflow = "";
-}
-
-// Badhannada sawirrada
-featuredPhoto.addEventListener("click", () => {
-    openPhoto(0);
-});
-
-closeLightbox.addEventListener("click", closePhoto);
-nextPhoto.addEventListener("click", showNextPhoto);
-previousPhoto.addEventListener("click", showPreviousPhoto);
-
-// Xir marka bannaanka sawirka la taabto
-lightbox.addEventListener("click", event => {
-    if (event.target === lightbox) {
-        closePhoto();
-    }
-});
-
-// Adeegso fallaaraha keyboard-ka
-document.addEventListener("keydown", event => {
-    if (!lightbox.classList.contains("open")) return;
-
-    if (event.key === "Escape") closePhoto();
-    if (event.key === "ArrowRight") showNextPhoto();
-    if (event.key === "ArrowLeft") showPreviousPhoto();
-});
-
-// All Photos iyo Favorites
-filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        currentFilter = button.dataset.filter;
-
-        filterButtons.forEach(item => {
-            item.classList.toggle("active", item === button);
-        });
-
-        displayPhotos();
-    });
-});
-
-// Bilow website-ka
-displayPhotos();
+render();
