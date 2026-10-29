@@ -1,52 +1,126 @@
 <!DOCTYPE html>
 <html lang="so">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beerta Sawirada</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f7d3e5">
+
+    <title>Beerta Sawirada 💗</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap"
+          rel="stylesheet">
 </head>
+
 <body>
 
-  <div class="side side-left" aria-hidden="true"></div>
-  <div class="side side-right" aria-hidden="true"></div>
+    <div class="page-decoration">♡</div>
+    <div class="page-decoration decoration-two">✿</div>
 
-  <div class="page">
-    <header>
-      <h1 class="box box-h1">Beerta Sawirada</h1>
-      <p class="box box-teal">My favorite memories</p>
-      <p class="box box-yellow">Beautiful pictures</p>
+    <header class="hero">
+        <span class="small-label">♡ MY LITTLE GALLERY ♡</span>
+
+        <h1>Beerta Sawirada</h1>
+
+        <p class="subtitle">Xusuuso qurux badan, qalbi faraxsan 🌷</p>
+
+        <div class="hero-line">
+            <span>✦</span>
+            <span>♡</span>
+            <span>✦</span>
+        </div>
     </header>
 
-    <main class="gallery">
-      <figure>
-        <img src="photo1.jpeg" alt="My photo 1">
-        <figcaption>Tushtu Quruxda Ayay Ka Mida Tahay</figcaption>
-      </figure>
-      <figure>
-        <img src="photo2.jpeg" alt="My photo 2">
-        <figcaption></figcaption>
-      </figure>
-      <figure>
-        <img src="photo3.jpeg" alt="My photo 3">
-        <figcaption></figcaption>
-      </figure>
-      <figure>
-        <img src="photo4.jpeg" alt="My photo 4">
-        <figcaption></figcaption>
-      </figure>
+    <main class="container">
+
+        <!-- Sawirka koowaad: Dimple -->
+        <section class="featured-section">
+
+            <div class="featured-frame">
+                <span class="featured-label">MY FAVORITE ♡</span>
+
+                <img
+                    src="images/photo1.jpeg"
+                    alt="Tushtu oo leh dimple"
+                    class="featured-photo"
+                    id="featuredPhoto"
+                    onclick="openPhoto(this.src, this.alt)"
+                >
+
+                <div class="featured-caption">
+                    <span class="caption-flower">🌸</span>
+
+                    <h2>Tushtu Waa Quruxdayda</h2>
+
+                    <p>
+                        Dhoolla-caddayntaadu waa farxad,
+                        quruxdaaduna waa xusuus qalbiga ku nool. 💗
+                    </p>
+
+                    <div class="heart-divider">♡ ♡ ♡</div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Qoraalka gallery-ga -->
+        <section class="gallery-heading">
+            <span class="small-label">LITTLE MOMENTS, BIG MEMORIES</span>
+
+            <h2>My Favorite Memories 💕</h2>
+
+            <p>Sawir kasta wuxuu xambaarsan yahay xusuus gaar ah.</p><br><br><p>Sawir walba wuxu ka turjumya farxada & quruxda boqorada,</p>
+        </section>
+
+        <!-- Badhannada doorashada -->
+        <nav class="filter-buttons" aria-label="Doorashada sawirrada">
+            <button class="filter-btn active" data-filter="all">
+                ♡ All Photos
+            </button>
+
+            <button class="filter-btn" data-filter="favorites">
+                ♥ Favorites
+            </button>
+        </nav>
+
+        <!-- JavaScript ayaa halkan gelinaya 15-ka sawir -->
+        <section class="gallery-grid" id="gallery"></section>
+
+        <footer>
+            <div class="footer-heart">♡</div>
+
+            <h3>Made with Love</h3>
+
+            <p>Qurux, xusuus iyo farxad — mar walba. 🌷</p>
+
+            <span>© Beerta Sawirada</span>
+        </footer>
+
     </main>
-  </div>
 
-  <div class="lightbox" id="lightbox">
-    <button id="close" aria-label="Close">&times;</button>
-    <button id="prev" aria-label="Previous photo">&lsaquo;</button>
-    <img id="lightbox-img" src="" alt="Full size photo">
-    <button id="next" aria-label="Next photo">&rsaquo;</button>
-  </div>
+    <!-- Meesha sawirka lagu weyneeyo -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
 
-  <script src="script.js"></script>
+        <button class="close-lightbox"
+                id="closeLightbox"
+                aria-label="Xir sawirka">×</button>
+
+        <button class="lightbox-arrow previous"
+                id="previousPhoto"
+                aria-label="Sawirkii hore">‹</button>
+
+        <img src="" alt="Sawir weyn" id="lightboxImage">
+
+        <button class="lightbox-arrow next"
+                id="nextPhoto"
+                aria-label="Sawirka xiga">›</button>
+
+        <p id="photoCounter"></p>
+    </div>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
